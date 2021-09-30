@@ -18,6 +18,15 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.get("/live", (req, res) => {
+  res.render("live");
+});
+app.get("/mind", (req, res) => {
+  res.render("mind");
+});
+
+
+
 /* ___________ store page to cultsport page  ____________ */
 app.get("/store/cultsport/:id", async (req, res) => {
   const product = await Product.find({ id: req.params.id }).lean().exec();
@@ -43,7 +52,7 @@ app.get("/store/mens/cultsport/:id", async (req, res) => {
   });
 });
 
-/* ___________ return api requests ____________ */
+/* ___________ returns api requests ____________ */
 app.use("/store", storeController);
 
 app.listen(3000, async () => {

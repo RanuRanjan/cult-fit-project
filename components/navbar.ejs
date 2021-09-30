@@ -1,26 +1,34 @@
 <header>
     <!-- nav bar -->
-    <div id="navBar">
-        <div class="nav-CultFit-Logo">
-            <img src="https://static.cure.fit/assets/images/curefit-v-man.svg" onclick="homePage()" />
-        </div>
-
+    
+        <div id="navBar">
+            <a href="index"></a>
+            <div class="nav-CultFit-Logo">
+                <img src="https://static.cure.fit/assets/images/curefit-v-man.svg" onclick="homePage()" />
+            </a>
+            </div>
+    
+    
         <!-- Nav Middle items -->
         <div class="nav-middle">
-            <div class="nav-live-Logo">
-                <img src="https://static.cure.fit/assets/images/Livefit.svg" onclick="toLive()" />
-                <p class="navText" onclick="toLive()">LIVE</p>
-            </div>
+            <a href="/live">
+                <div class="nav-live-Logo" onclick="toLive()" >
+                    <img src="https://static.cure.fit/assets/images/Livefit.svg" onclick="toLive()" />
+                    <p class="navText" >LIVE</p>
+                </div>
+            </a>
 
             <div class="nav-cult-Logo">
                 <img src="https://static.cure.fit/assets/images/cult-icon.svg" alt="cult_logo" onclick="toCult()" />
                 <p class="navText" onclick="toCult()">CULT</p>
             </div>
 
-            <div class="nav-mind-Logo">
-                <img src="https://static.cure.fit/assets/images/mind-icon.svg" alt="" onclick="toMind()" />
-                <p class="navText" onclick="toMind()">MIND</p>
-            </div>
+            <a href="/mind">
+                <div class="nav-mind-Logo">
+                    <img src="https://static.cure.fit/assets/images/mind-icon.svg" alt="" onclick="toMind()" />
+                    <p class="navText" onclick="toMind()">MIND</p>
+                </div>
+            </a>
 
             <div class="nav-care-Logo">
                 <img src="https://static.cure.fit/assets/images/carefit-blk.svg" alt="" onclick="toCare()" />
