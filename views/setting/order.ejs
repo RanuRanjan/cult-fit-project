@@ -284,6 +284,9 @@
             <p class="order-heading">ACTIVE PACKS & SUBSCRIPTIONS</p>
             <div id="data">
                 <div class="order-image">
+                    <% item.orders.forEach(el => { %>
+                        <p><%= el[0].name %></p>
+                    <% }) %>
                     <!-- <img
                         src="https://cdn-images.cure.fit/www-curefit-com/image/upload/image/mePage/no-active-packs%402x.png"> -->
                 </div>
