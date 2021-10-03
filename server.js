@@ -33,16 +33,15 @@ app.use(passport.session());
 // model
 const Product = require("../cult-fit-project/src/models/store.model");
 const WomenProduct = require("../cult-fit-project/src/models/women.model");
+const FootwearProduct = require("../cult-fit-project/src/models/footwear.model");
 const Cart = require("../cult-fit-project/src/models/cart.model");
 const Order = require("../cult-fit-project/src/models/order.model")
-
 
 /* ___________ Controllers ____________ */
 const storeController = require("./src/controller/store.controller");
 const cartController = require("./src/controller/cart.controller");
 const profileController = require("./src/controller/profile.controller");
 
-/* ___________ home page  ____________ */
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -68,6 +67,10 @@ app.post("/store/women", async (req, res) => {
   return res.status(201).send({ womenProduct });
 });
 
+app.post("/store/footwear", async (req, res) => {
+  const footwearproduct = await FootwearProduct.create(req.body);
+  return res.status(201).send({ footwearproduct });
+});
 /* ___________ store page to mens page  ____________ */
 app.get("/store/women", async (req, res) => {
   const product = await WomenProduct.find().lean().exec();
@@ -75,6 +78,14 @@ app.get("/store/women", async (req, res) => {
     product,
   });
 });
+
+app.get("/store/footwear", async (req, res) => {
+  const product = await FootwearProduct.find().lean().exec();
+  res.render("footwear", {
+    product,
+  });
+});
+
 
 /* ___________ mens page to cultsport page  ____________ */
 app.get("/store/mens/cultsport/:_id", async (req, res) => {
@@ -93,6 +104,18 @@ app.get("/store/women/cultsport/:_id", async (req, res) => {
     product,
   });
 });
+
+
+/* ___________ footwear page to cultsport page  ____________ */
+app.get("/store/footwear/cultsport/:_id", async (req, res) => {
+  const product = await FootwearProduct.find({ _id: req.params._id })
+    .lean()
+    .exec();
+  return res.render("cultsport", {
+    product,
+  });
+});
+
 
 /* ___________ cart to payment ____________ */
 app.get("/payment", async (req, res) => {
@@ -250,7 +273,6 @@ app.post("/address", isLoggedIn, async (req, res) => {
   }
 });
 
-
 app.get("/orders", isLoggedIn, async (req, res) => {
   const userId = req.user._id;
   const cart = await Cart.findOne({ userId });
@@ -270,6 +292,14 @@ app.get("/store/w_cultsport/:_id", async (req, res) => {
   });
 });
 
+app.get("/store/f_cultsport/:_id", async (req, res) => {
+  const product = await FootwearProduct.find({ _id: req.params._id })
+    .lean()
+    .exec();
+  res.render("cultsport", {
+    product,
+  });
+});
 
 app.get("/logout", (req, res) => {
   req.logout();
